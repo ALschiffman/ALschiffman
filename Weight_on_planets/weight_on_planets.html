@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="weight.css">
+        <script src="Weight.js"></script>
+    </head>
+    <header>
+        <h1 class="heading">Weight on different planets</h1>
+    </header>
+    <body>
+        <div class="star"></div>
+    <form name="planets" value="planets">
+        <h2 class="heading">Enter the weight of the object on Earth</h2>
+        <input type="number" name="input" class="input" ID="input"  placeholder="# of pounds or kg" onkeypress="return searchKeyPress(event)"/>
+        <input type="button" ID="btn" class="button" onclick="compute()" />
+        <br>
+        <br>
+        <label name="Mercury" class="label">Mercury:</label>
+        <div class="mplanet"></div>
+        <input type="text" class="output" ID="mercury" value=""/>
+        <br>
+        <br>
+        <label name="Venus" class="label">Venus:</label>
+        <div class="vplanet"></div>
+        <input type="text" class="output" ID="venus" value=""/>
+        <br>
+        <br>
+        <label name="Earth" class="label">Earth:</label>
+        <div class="eplanet"></div>
+        <input type="text" class="output" ID="Earth" value=""/>
+        <br>
+        <br>
+        <label name="Mars" class="label">Mars:</label>
+        <div class="maplanet"></div>
+        <input type="text" class="output" ID="Mars" value=""/>
+        <br>
+        <br>
+        <label name="Jupiter" class="label">Jupiter:</label>
+        <div class="jplanet"></div>
+        <input type="text" class="output" ID="Jupiter" value=""/>
+        <br>
+        <br>
+        <label name="Saturn" class="label">Saturn:</label>
+        <div class="splanet"></div>
+        <input type="text" class="output" ID="Saturn" value=""/>
+        <br>
+        <br>
+        <label name="Uranus" class="label">Uranus:</label>
+        <div class="uplanet"></div>
+        <input type="text" class="output" ID="Uranus" value=""/>
+        <br>
+        <br>
+        <label name="Neptune" class="label">Neptune:</label>
+        <div class="nplanet"></div>
+        <input type="text" class="output" ID="Neptune" value=""/>
+        <br>
+        <br>
+        <label name="Sun" class="label">Sun:</label>
+        <input type="text" class="output" ID="Sun"/>
+        <br>
+        <br>
+    </form>
+    </body>
+</html>
