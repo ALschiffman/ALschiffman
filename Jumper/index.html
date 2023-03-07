@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+#world{
+    background-image: url(world.jpg);
+    height: 591px;
+    width: 1000px;
+}
+.charachter{
+    position: absolute;
+    height: 100px;
+    width: 63px;
+    top: 409px;
+    left: 100px;
+}
+.floor{
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    height: 10px;
+    width: 510px;
+    top: 500px;
+    left:0px;
+}
+.floor1{
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    height: 10px;
+    width: 500px;
+    top: 500px;
+    left:600px;
+}
+.row{
+    position: absolute;
+    top: 500;
+}
+.goal{
+    background-color: rgb(55, 255, 0);
+    position: absolute;
+    height: 100px;
+    width: 10px;
+    top: 400px;
+    left:997.5px
+}
+#next{
+    display: none;
+}
+
+        </style>
+    </head>
+    <body>
+        
+<div id="world"></div>
+<div id="charachter"></div>
+    <div class="charachter"></div>
+    <div id="floor">
+        <div class="floor"></div>
+    </div>
+<div id="floor1">
+    <div class="floor1"></div>
+</div>
+<div id="goal">
+    <div class="goal"></div>
+</div>
+<a href="level2.html"><button id="next"></button></a>
+</div>
+
+<script type="text/javascript">
+    
+    var charachter = {
+        left: 0,
+        top:400
+    }
+    var floor = {
+        top:500,
+        left:0
+
+
+    }
+    var floor1 = {
+        left:600,
+        top:500
+    }
+    var goal= {
+        left:997.5,
+        top:400
+    }
+    var x = 1
+
+    var floora = [0,0,0,0,0,0,0,0,0]
+
+        function drawcharachterR(){
+        content = ""
+        content = "<div class='charachter'style='background-image: url(right"+x+".png); left:"+charachter.left+"px; top:"+charachter.top+"px'></div>"
+        document.getElementById("charachter").innerHTML = content
+    }
+drawcharachterR()
+
+    function drawcharachterL(){
+        content = ""
+        content = "<div class='charachter'style='background-image: url(left"+x+".png); left:"+charachter.left+"px; top:"+charachter.top+"px'></div>"
+        document.getElementById("charachter").innerHTML = content
+    }
+
+
+    function drawfloor(){
+        content = ""
+        content = "<div class='floor'style='left:"+floor.left+"px; top:"+floor.top+"px'></div>"
+        document.getElementById("floor").innerHTML = content
+    }
+    drawfloor()
+
+
+    function drawfloor1(){
+        content = ""
+        content = "<div class='floor1'style='left:"+floor1.left+"px; top:"+floor1.top+"px'></div>"
+        document.getElementById("floor1").innerHTML = content
+    }
+    drawfloor1()
+
+var direction = 0
+
+function falling(){
+    console.log("falling")
+
+if(charachter.top < 900){
+    if(charachter.top+100 != floor.top && charachter.left != floora.length*10){
+    charachter.top = charachter.top + 5
+    }
+    else if(charachter.top+100 != floor1.top && charachter.left>550){
+    charachter.top = charachter.top + 5
+    }
+    else if( charachter.left>500 && charachter.left<550){
+    charachter.top = charachter.top + 5
+    }
+    if (direction===0){
+        drawcharachterR()
+    }
+    if(direction===1){
+        drawcharachterL()
+    }
+}
+if(charachter.top >=800){
+    charachter.top = 400
+    charachter.left=0
+}
+    
+    setTimeout(falling,25)
+}
+falling()
+
+document.onkeydown=function(e){
+    console.log(e)
+
+    if(x ===1){
+        x =2
+    }
+    else if (x===2){
+        x =1
+    }
+    if(e.keyCode === 39){
+        charachter.left = charachter.left + 15
+        drawcharachterR()
+        direction=0
+        if(charachter.left >= goal.left && charachter.top === goal.top){
+            document.getElementById("next").click() 
+        }
+    }
+    if(e.keyCode === 37){
+        charachter.left = charachter.left - 15 
+        drawcharachterL()
+        direction=1
+    }
+
+    if(e.keyCode === 32){
+        if(charachter.top === floor.top - 100){
+        charachter.top = charachter.top - 100
+        if(direction =0){
+            drawcharachterR()
+        }
+        else{
+            drawcharachterL()
+        }
+        }
+    }
+}
+
+</script>
+    </body>
+</html>
